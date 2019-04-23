@@ -73,13 +73,13 @@ This project uses the git branching model [described here](https://nvie.com/post
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/njkleiner/controller-base/tags). 
 
 ## Authors
 
 * [Noah Kleiner](https://github.com/njkleiner)
 
-See also the list of [contributors](https://github.com/njkleiner/the-project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/njkleiner/controller-base/contributors) who participated in this project.
 
 ## License
 
