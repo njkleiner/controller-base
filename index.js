@@ -32,11 +32,11 @@ class Controller {
     configure(router) {
         const self = this;
 
-        router.get('/', (request, response, next) => self.$index(request, response, next));
-        router.get('/:id', (request, response, next) => self.$show(request, response, next));
-
         router.get('/new', (request, response, next) => self.$new(request, response, next));
         router.get('/:id/edit', (request, response, next) => self.$edit(request, response, next));
+
+        router.get('/', (request, response, next) => self.$index(request, response, next));
+        router.get('/:id', (request, response, next) => self.$show(request, response, next));
 
         router.post('/', (request, response, next) => self.$create(request, response, next));
         router.put('/:id', (request, response, next) => self.$update(request, response, next));
