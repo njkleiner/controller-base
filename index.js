@@ -30,20 +30,22 @@ class Controller {
     configure(router) {
         const wrap = (handler) => (request, response, next) => handler(request, response, next).catch(error => next(error));
 
+        // Non-action routes
         router.get('/new', wrap(this.$new));
-
         router.get('/:id/edit', wrap(this.$edit));
 
-        router.get('/', wrap(this.$index));
-
-        router.get('/:id', wrap(this.$show));
-
+        // CREATE
         router.post('/', wrap(this.$create));
 
-        router.put('/:id', wrap(this.$update));
+        // READ
+        router.get('/', wrap(this.$index));
+        router.get('/:id', wrap(this.$show));
 
+        // UPDATE
+        router.put('/:id', wrap(this.$update));
         router.patch('/:id', wrap(this.$update));
 
+        // DELETE
         router.delete('/:id', wrap(this.$destroy));
     }
 }
