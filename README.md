@@ -1,6 +1,6 @@
 # controller-base
 
-> A controller template for MVC in Express.
+> A (CRUD) controller template for MVC in Express.
 
 ## Getting Started
 
