@@ -23,8 +23,8 @@ class Controller {
         return next(new Error('#update is not implemented'));
     }
 
-    async $delete(request, response, next) {
-        return next(new Error('#delete is not implemented'));
+    async $destroy(request, response, next) {
+        return next(new Error('#destroy is not implemented'));
     }
 
     configure(router) {
@@ -44,7 +44,7 @@ class Controller {
 
         router.patch('/:id', wrap(this.$update));
 
-        router.delete('/:id', wrap(this.$delete));
+        router.delete('/:id', wrap(this.$destroy));
     }
 }
 
