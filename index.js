@@ -1,47 +1,50 @@
 class Controller {
-    constructor() {}
-
-    $index(request, response, next) {
-        next();
+    async $new(request, response, next) {
+        return next(new Error('#new is not implemented'));
     }
 
-    $new(request, response, next) {
-        next();
+    async $edit(request, response, next) {
+        return next(new Error('#edit is not implemented'));
     }
 
-    $create(request, response, next) {
-        next();
+    async $index(request, response, next) {
+        return next(new Error('#index is not implemented'));
     }
 
-    $show(request, response, next) {
-        next();
+    async $show(request, response, next) {
+        return next(new Error('#show is not implemented'));
     }
 
-    $edit(request, response, next) {
-        next();
+    async $create(request, response, next) {
+        return next(new Error('#create is not implemented'));
     }
 
-    $update(request, response, next) {
-        next();
+    async $update(request, response, next) {
+        return next(new Error('#update is not implemented'));
     }
 
-    $destroy(request, response, next) {
-        next();
+    async $delete(request, response, next) {
+        return next(new Error('#delete is not implemented'));
     }
 
     configure(router) {
-        const self = this;
+        const wrap = (handler) => (request, response, next) => handler(request, response, next).catch(error => next(error));
 
-        router.get('/new', (request, response, next) => self.$new(request, response, next));
-        router.get('/:id/edit', (request, response, next) => self.$edit(request, response, next));
+        router.get('/new', wrap(this.$new));
 
-        router.get('/', (request, response, next) => self.$index(request, response, next));
-        router.get('/:id', (request, response, next) => self.$show(request, response, next));
+        router.get('/:id/edit', wrap(this.$edit));
 
-        router.post('/', (request, response, next) => self.$create(request, response, next));
-        router.put('/:id', (request, response, next) => self.$update(request, response, next));
-        router.patch('/:id', (request, response, next) => self.$update(request, response, next));
-        router.delete('/:id', (request, response, next) => self.$destroy(request, response, next));
+        router.get('/', wrap(this.$index));
+
+        router.get('/:id', wrap(this.$show));
+
+        router.post('/', wrap(this.$create));
+
+        router.put('/:id', wrap(this.$update));
+
+        router.patch('/:id', wrap(this.$update));
+
+        router.delete('/:id', wrap(this.$delete));
     }
 }
 
