@@ -47,6 +47,8 @@ class Controller {
 
         // DELETE
         router.delete('/:id', wrap(this.$destroy));
+
+        return router;
     }
 }
 
