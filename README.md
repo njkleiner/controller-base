@@ -12,7 +12,9 @@
 
 The controller follows the [Ruby on Rails methodology](https://www.codecademy.com/articles/standard-controller-actions).
 
-The controller will register the following action methods by default:
+All action methods are asynchronous so that you can easily use the `async`/`await` syntax when implementing them. They are wrapped using a higher-order function that passes errors to the next handler in the chain.
+
+Each method has the following signature: `async $action(request, response, next)`, the controller will register the following action methods by default:
 * `$index`
 * `$new`
 * `$create`
@@ -21,8 +23,6 @@ The controller will register the following action methods by default:
 * `$update`
 * `$destroy`
 
-Each method has the following signature: `$action(request, response, next)`.
-
 Simply extend the controller class and override the `$action` methods and add your own actions as needed.
 
 ```javascript
@@ -30,13 +30,14 @@ Simply extend the controller class and override the `$action` methods and add yo
 const Controller = require('controller-base');
 
 class AccountsController extends Controller {
-    $index(request, response, next) {
+    async $index(request, response, next) {
         // List all accounts...
     }
     
     // Implement the other $action methods as needed.
     
     // Add a custom $action
+    // NOTE: Unlike the default methods, this one is not declared using the `async` keyword.
     $action(request, response, next) {
         response.send('/action');
     }
