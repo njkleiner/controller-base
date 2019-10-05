@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 - Make action methods asynchronous to allow easy `async`/`await` usage.
+- The `configure` method now returns the router object it was given as an argument.
 
 ## [1.0.1] - 2019-04-24
 
